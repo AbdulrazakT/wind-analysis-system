@@ -21,10 +21,6 @@ const useStyles = makeStyles((theme) => ({
 export default function SimpleAccordion({ files, viewFiles }) {
   const classes = useStyles();
 
-  //   useEffect(() => {
-  //     console.log(files.winddirection.length);
-  //   });
-
   return (
     <div className={classes.root}>
       <Accordion>

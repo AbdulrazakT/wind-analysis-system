@@ -6,10 +6,18 @@ import {
   TableHead,
   TableRow,
   Typography,
+  makeStyles,
 } from "@material-ui/core";
 import React from "react";
 
-export default function SummaryTable({ summaries }) {
+const useStyles = makeStyles((theme) => ({
+  button_cursor: {
+    cursor: "pointer",
+  },
+}));
+
+export default function SummaryTable({ summaries, downloadPrevReport }) {
+  const classes = useStyles();
   return (
     <div>
       <Paper>
@@ -43,7 +51,16 @@ export default function SummaryTable({ summaries }) {
                     <TableCell component="th" scope="row">
                       {index + 1}
                     </TableCell>
-                    <TableCell>{data.name}</TableCell>
+                    <TableCell>
+                      <Typography
+                        className={classes.button_cursor}
+                        onClick={() => downloadPrevReport(data)}
+                        variant="button"
+                        color="primary"
+                      >
+                        {data.name}
+                      </Typography>
+                    </TableCell>
                     <TableCell>{data.issued_at}</TableCell>
                   </TableRow>
                 );

@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Form({ submit }) {
+export default function Form({ submit, files }) {
   const classes = useStyles();
   const [time, setTime] = useState(5);
   const [station, setStation] = useState("");
@@ -64,7 +64,11 @@ export default function Form({ submit }) {
         </Grid>
 
         <Grid item xs={12} className={classes.gridCenter}>
-          <CustomizedSnackbars snackbar_purpose="submit" submit={submit} />
+          <CustomizedSnackbars
+            snackbar_purpose="submit"
+            files={files}
+            submit={submit}
+          />
         </Grid>
       </Grid>
     </form>

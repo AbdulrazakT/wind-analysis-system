@@ -22,8 +22,8 @@ export default function Results() {
       responseType: "blob", // Important
     }).then((response) => {
       response.data.type === "application/json"
-        ? console.log("Nothing to download")
-        : fileDownload(response.data, "Summary.csv");
+        ? alert("Nothing to download, please submit files first!")
+        : fileDownload(response.data, "Tabora.csv");
     });
   };
 
@@ -34,7 +34,7 @@ export default function Results() {
       responseType: "blob", // Important
     }).then((response) => {
       response.data.type === "application/json"
-        ? console.log("Nothing to download")
+        ? alert("Nothing to download, please submit files first!")
         : fileDownload(response.data, "Graph.pdf");
     });
   };

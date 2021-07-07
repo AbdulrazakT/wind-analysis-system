@@ -1,4 +1,5 @@
 import {
+  makeStyles,
   Paper,
   Table,
   TableBody,
@@ -9,7 +10,14 @@ import {
 } from "@material-ui/core";
 import React from "react";
 
-export default function GraphTable({ graphs }) {
+const useStyles = makeStyles((theme) => ({
+  button_cursor: {
+    cursor: "pointer",
+  },
+}));
+
+export default function GraphTable({ graphs, downloadPrevGraph }) {
+  const classes = useStyles();
   return (
     <div>
       <Paper>
@@ -43,7 +51,16 @@ export default function GraphTable({ graphs }) {
                     <TableCell component="th" scope="row">
                       {index + 1}
                     </TableCell>
-                    <TableCell>{data.name}</TableCell>
+                    <TableCell>
+                      <Typography
+                        className={classes.button_cursor}
+                        onClick={() => downloadPrevGraph(data)}
+                        variant="button"
+                        color="primary"
+                      >
+                        {data.name}
+                      </Typography>
+                    </TableCell>
                     <TableCell>{data.issued_at}</TableCell>
                   </TableRow>
                 );

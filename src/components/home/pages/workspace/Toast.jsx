@@ -21,12 +21,13 @@ export default function CustomizedSnackbars({
   snackbar_purpose,
   confirm,
   status,
+  files,
 }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
-    submit();
+    submit(files);
     setOpen(true);
   };
 

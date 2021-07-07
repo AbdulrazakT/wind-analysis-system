@@ -34,7 +34,7 @@ const Workspace = () => {
     data.append("ws", windspeed[i]);
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (file) => {
     fetch("http://localhost:8080/upload", {
       method: "POST",
       body: data,
