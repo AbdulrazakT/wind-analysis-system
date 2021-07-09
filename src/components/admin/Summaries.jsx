@@ -17,7 +17,13 @@ const Summaries = () => {
       </Typography>
       <br />
       <Typography variant="h6" color="primary">
-        {total}
+        {total <= 0 ? (
+          <Typography variant="body2" color="secondary">
+            No Climate Summaries!
+          </Typography>
+        ) : (
+          total
+        )}
       </Typography>
     </div>
   );

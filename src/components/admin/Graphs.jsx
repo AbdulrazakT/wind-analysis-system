@@ -4,11 +4,13 @@ import { useEffect, useState } from "react";
 
 const Graphs = () => {
   const [total, setTotal] = useState(0);
+
+  // use effect
   useEffect(() => {
     fetch("http://localhost:8080/total_graphs")
       .then((response) => response.json())
       .then((total) => setTotal(total));
-    return () => {};
+    // return () => {};
   });
   return (
     <div>
@@ -17,7 +19,13 @@ const Graphs = () => {
       </Typography>
       <br />
       <Typography variant="h6" color="primary">
-        {total}
+        {total <= 0 ? (
+          <Typography variant="body2" color="secondary">
+            No Graphs!
+          </Typography>
+        ) : (
+          total
+        )}
       </Typography>
     </div>
   );
