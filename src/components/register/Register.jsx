@@ -59,7 +59,7 @@ export default function Register({ updateProfile, changeRoute }) {
         } else if (user === "Incorrect form submission!") {
           alert(user);
         } else {
-          alert("Invalid credentials");
+          alert("Unable to register, try another email address!");
         }
       });
   };
