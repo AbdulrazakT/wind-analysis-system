@@ -4,6 +4,7 @@ import Register from "./components/register/Register";
 import Home from "./components/home/Home";
 import { useState } from "react";
 import { useEffect } from "react";
+import Admin from "./components/admin/Admin";
 
 function App() {
   const [route, setRoute] = useState("signin");
@@ -31,6 +32,8 @@ function App() {
           changeRoute={handleRouteChange}
           updateProfile={updateProfile}
         />
+      ) : route === "admin" ? (
+        <Admin changeRoute={handleRouteChange} updateProfile={updateProfile} />
       ) : (
         <Home name={avatarName} changeRoute={handleRouteChange} user={user} />
       )}

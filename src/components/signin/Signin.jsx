@@ -11,6 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useState } from "react";
 
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -53,9 +54,12 @@ export default function Signin({ changeRoute, updateProfile }) {
     })
       .then((response) => response.json())
       .then((user) => {
-        if (user.id) {
+        if (user.role === 1) {
           updateProfile(user);
           changeRoute("home");
+        } else if (user.role === 2) {
+          updateProfile(user);
+          changeRoute("admin");
         } else if (user === "Incorrect form submission") {
           alert(user);
         } else {
