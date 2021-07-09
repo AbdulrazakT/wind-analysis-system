@@ -18,7 +18,7 @@ const Users = () => {
       <br />
       <Typography variant="h6" color="primary">
         {total <= 0 ? (
-          <Typography variant="subtitle1" color="secondary">
+          <Typography variant="body2" color="secondary">
             No Users!
           </Typography>
         ) : (

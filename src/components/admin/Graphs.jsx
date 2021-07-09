@@ -4,21 +4,23 @@ import { useEffect, useState } from "react";
 
 const Graphs = () => {
   const [total, setTotal] = useState(0);
+
+  // use effect
   useEffect(() => {
     fetch("http://localhost:8080/total_graphs")
       .then((response) => response.json())
       .then((total) => setTotal(total));
-    return () => {};
+    // return () => {};
   });
   return (
     <div>
-      <Typography variant="h6" color="initial" >
+      <Typography variant="h6" color="initial">
         <strong> TOTAL GRAPHS:</strong>
       </Typography>
       <br />
       <Typography variant="h6" color="primary">
         {total <= 0 ? (
-          <Typography variant="subtitle1" color="secondary">
+          <Typography variant="body2" color="secondary">
             No Graphs!
           </Typography>
         ) : (

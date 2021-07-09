@@ -163,7 +163,7 @@ export default function Dashboard() {
           >
             Wind Data Analytics & Visualization Tool
           </Typography>
-          <Typography component="h1" variant="h6" color="inherit" noWrap>
+          <Typography component="h1" variant="body1" color="inherit" noWrap>
             Admin Panel
           </Typography>
         </Toolbar>

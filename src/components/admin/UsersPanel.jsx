@@ -23,12 +23,14 @@ const useStyles = makeStyles((theme) => ({
 
 const UsersPanel = () => {
   const [users, setUsers] = useState([]);
+
+  // Use effect
   useEffect(() => {
     fetch("http://localhost:8080/all_climate_analysts")
       .then((response) => response.json())
       .then((results) => setUsers(results));
-    return () => {};
-  });
+    // return () => {};
+  }, [users]);
 
   const deleteFile = (file) => {
     fetch("http://localhost:8080/delete_user", {

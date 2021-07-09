@@ -32,10 +32,10 @@ const SummariesPannel = () => {
     fetch("http://localhost:8080/all_climate_summaries")
       .then((response) => response.json())
       .then((results) => setSummaries(results));
-    return () => {};
-  });
+    // return () => {};
+  }, [summaries]);
 
-  const downloadFile = async (file) => {
+  const downloadFile = (file) => {
     Axios({
       url: "http://localhost:8080/download",
       method: "POST",

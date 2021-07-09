@@ -31,10 +31,10 @@ const GraphsPannel = () => {
     fetch("http://localhost:8080/all_wind_graphs")
       .then((response) => response.json())
       .then((results) => setGraphs(results));
-    return () => {};
-  });
+    // return () => {};
+  }, [graphs]);
 
-  const downloadFile = async (file) => {
+  const downloadFile = (file) => {
     Axios({
       url: "http://localhost:8080/download",
       method: "POST",
