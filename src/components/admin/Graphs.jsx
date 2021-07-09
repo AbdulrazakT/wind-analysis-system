@@ -12,12 +12,18 @@ const Graphs = () => {
   });
   return (
     <div>
-      <Typography variant="h6" color="initial">
+      <Typography variant="h6" color="initial" >
         <strong> TOTAL GRAPHS:</strong>
       </Typography>
       <br />
       <Typography variant="h6" color="primary">
-        {total}
+        {total <= 0 ? (
+          <Typography variant="subtitle1" color="secondary">
+            No Graphs!
+          </Typography>
+        ) : (
+          total
+        )}
       </Typography>
     </div>
   );

@@ -9,10 +9,15 @@ import {
   TableBody,
   Button,
   makeStyles,
+  Typography,
 } from "@material-ui/core";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import DeleteForeverOutlinedIcon from "@material-ui/icons/DeleteForeverOutlined";
+import GetAppOutlinedIcon from "@material-ui/icons/GetAppOutlined";
 import { useEffect, useState } from "react";
+// For file download
+import Axios from "axios";
+import fileDownload from "js-file-download";
 
 const useStyles = makeStyles((theme) => ({
   btn_margin: {
@@ -21,8 +26,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const GraphsPannel = () => {
-  //   const [summaries, setUsers] = useState([]);
-  //   const [summaries, setSummaries] = useState([]);
   const [graphs, setGraphs] = useState([]);
 
   useEffect(() => {
@@ -31,6 +34,35 @@ const GraphsPannel = () => {
       .then((results) => setGraphs(results));
     return () => {};
   });
+
+  const downloadFile = async (file) => {
+    Axios({
+      url: "http://localhost:8080/download",
+      method: "POST",
+      responseType: "blob",
+      data: { file__path: file.graph },
+    }).then((response) => {
+      response.data.type === "application/json"
+        ? alert("Nothing to download, please submit files first!")
+        : fileDownload(response.data, file.name);
+    });
+  };
+
+  const deleteFile = (file) => {
+    fetch("http://localhost:8080/delete_graph", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: file.graph_id,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data === "success") {
+          console.log("Deleted");
+        }
+      });
+  };
 
   const classes = useStyles();
   return (
@@ -42,6 +74,9 @@ const GraphsPannel = () => {
               <TableRow>
                 <TableCell>
                   <strong>S/N</strong>
+                </TableCell>
+                <TableCell>
+                  <strong>File ID</strong>
                 </TableCell>
                 <TableCell>
                   <strong>GRAPH NAME</strong>
@@ -61,38 +96,54 @@ const GraphsPannel = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {graphs.map((data, index) => {
-                return (
-                  <TableRow key={index}>
-                    <TableCell component="th" scope="row">
-                      {index + 1}
-                    </TableCell>
-                    <TableCell>{data.name}</TableCell>
-                    <TableCell>
-                      {data.firstname} {data.lastname}
-                    </TableCell>
-                    <TableCell>{data.graph}</TableCell>
-                    <TableCell>{data.issued_at}</TableCell>
-                    <TableCell align="center">
-                      <Button
-                        variant="outlined"
-                        color="primary"
-                        startIcon={<EditOutlinedIcon />}
-                      >
-                        Modify
-                      </Button>
-                      <Button
-                        variant="outlined"
-                        color="secondary"
-                        startIcon={<DeleteForeverOutlinedIcon />}
-                        className={classes.btn_margin}
-                      >
-                        Remove
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
+              {graphs.length === 0 ? (
+                <TableRow>
+                  <TableCell>
+                    <Typography variant="subtitle1" color="secondary">
+                      No data!
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+              ) : (
+                graphs.map((data, index) => {
+                  return (
+                    <TableRow key={index}>
+                      <TableCell component="th" scope="row">
+                        {index + 1}
+                      </TableCell>
+                      <TableCell>{data.graph_id}</TableCell>
+                      <TableCell>{data.name}</TableCell>
+                      <TableCell>
+                        {data.firstname} {data.lastname}
+                      </TableCell>
+                      <TableCell>{data.graph}</TableCell>
+                      <TableCell>{data.issued_at}</TableCell>
+                      <TableCell align="center">
+                        <Button
+                          onClick={() => downloadFile(data)}
+                          size="small"
+                          variant="text"
+                          color="primary"
+                          startIcon={<GetAppOutlinedIcon />}
+                          className={classes.btn_margin}
+                        >
+                          Download
+                        </Button>
+                        <Button
+                          onClick={() => deleteFile(data)}
+                          size="small"
+                          variant="text"
+                          color="secondary"
+                          startIcon={<DeleteForeverOutlinedIcon />}
+                          className={classes.btn_margin}
+                        >
+                          Delete
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })
+              )}
             </TableBody>
           </Table>
         </Paper>

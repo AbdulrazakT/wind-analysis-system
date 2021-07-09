@@ -9,9 +9,11 @@ import {
   TableBody,
   Button,
   makeStyles,
+  Typography,
 } from "@material-ui/core";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import DeleteForeverOutlinedIcon from "@material-ui/icons/DeleteForeverOutlined";
+import GetAppOutlinedIcon from "@material-ui/icons/GetAppOutlined";
 import { useEffect, useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
@@ -28,6 +30,22 @@ const UsersPanel = () => {
       .then((results) => setUsers(results));
     return () => {};
   });
+
+  const deleteFile = (file) => {
+    fetch("http://localhost:8080/delete_user", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: file.id,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data === "success") {
+          console.log("Deleted");
+        }
+      });
+  };
 
   const classes = useStyles();
   return (
@@ -52,42 +70,61 @@ const UsersPanel = () => {
                 <TableCell>
                   <strong>EMAIL</strong>
                 </TableCell>
+                <TableCell>
+                  <strong>ROLE</strong>
+                </TableCell>
                 <TableCell align="center">
                   <strong>ACTION</strong>
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {users.map((user, index) => {
-                return (
-                  <TableRow key={index}>
-                    <TableCell component="th" scope="row">
-                      {index + 1}
-                    </TableCell>
-                    <TableCell>{user.firstname}</TableCell>
-                    <TableCell>{user.lastname}</TableCell>
-                    <TableCell>{user.employmentid}</TableCell>
-                    <TableCell>{user.email}</TableCell>
-                    <TableCell align="center">
-                      <Button
-                        variant="text"
-                        color="primary"
-                        startIcon={<EditOutlinedIcon />}
-                      >
-                        Edit
-                      </Button>
-                      <Button
-                        variant="text"
-                        color="secondary"
-                        startIcon={<DeleteForeverOutlinedIcon />}
-                        className={classes.btn_margin}
-                      >
-                        Delete
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
+              {users.length === 0 ? (
+                <TableRow>
+                  <TableCell>
+                    <Typography variant="subtitle1" color="secondary">
+                      No data!
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+              ) : (
+                users.map((user, index) => {
+                  return (
+                    <TableRow key={index}>
+                      <TableCell component="th" scope="row">
+                        {index + 1}
+                      </TableCell>
+                      <TableCell>{user.firstname}</TableCell>
+                      <TableCell>{user.lastname}</TableCell>
+                      <TableCell>{user.employmentid}</TableCell>
+                      <TableCell>{user.email}</TableCell>
+                      <TableCell>
+                        {user.role === 1 ? "Climate Analyst" : "System Admin"}
+                      </TableCell>
+                      <TableCell align="center">
+                        <Button
+                          size="small"
+                          variant="text"
+                          color="primary"
+                          startIcon={<EditOutlinedIcon />}
+                        >
+                          Edit
+                        </Button>
+                        <Button
+                          onClick={() => deleteFile(user)}
+                          size="small"
+                          variant="text"
+                          color="secondary"
+                          startIcon={<DeleteForeverOutlinedIcon />}
+                          className={classes.btn_margin}
+                        >
+                          Delete
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })
+              )}
             </TableBody>
           </Table>
         </Paper>
