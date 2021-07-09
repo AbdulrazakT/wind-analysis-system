@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Form({ submit, files }) {
   const classes = useStyles();
   const [time, setTime] = useState(5);
-  const [station, setStation] = useState("");
+  // const [station, setStation] = useState("");
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
@@ -41,7 +41,7 @@ export default function Form({ submit, files }) {
             id="outlined-basic"
             label="Station name"
             variant="outlined"
-            onChange={(e) => setStation(e.target.value)}
+            // onChange={(e) => setStation(e.target.value)}
           />
         </Grid>
 

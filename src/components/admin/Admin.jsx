@@ -8,7 +8,6 @@ import {
   Typography,
   Divider,
   IconButton,
-  Badge,
   Container,
   Grid,
   Paper,
@@ -20,7 +19,6 @@ import {
 import AppBar from "@material-ui/core/AppBar";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import AssessmentOutlinedIcon from "@material-ui/icons/AssessmentOutlined";
 import LibraryBooksOutlinedIcon from "@material-ui/icons/LibraryBooksOutlined";
