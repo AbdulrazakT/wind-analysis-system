@@ -40,7 +40,7 @@ const Workspace = () => {
       body: data,
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => {})
       .catch((error) => console.log(error));
   };
 
