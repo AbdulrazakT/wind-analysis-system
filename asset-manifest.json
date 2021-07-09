@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/wind-analysis-system/static/css/main.dbf8d1d0.chunk.css",
-    "main.js": "/wind-analysis-system/static/js/main.f5901d09.chunk.js",
-    "main.js.map": "/wind-analysis-system/static/js/main.f5901d09.chunk.js.map",
+    "main.js": "/wind-analysis-system/static/js/main.aa21ecbe.chunk.js",
+    "main.js.map": "/wind-analysis-system/static/js/main.aa21ecbe.chunk.js.map",
     "runtime-main.js": "/wind-analysis-system/static/js/runtime-main.60e67a73.js",
     "runtime-main.js.map": "/wind-analysis-system/static/js/runtime-main.60e67a73.js.map",
     "static/css/2.8c5372c1.chunk.css": "/wind-analysis-system/static/css/2.8c5372c1.chunk.css",
-    "static/js/2.9a4c36e0.chunk.js": "/wind-analysis-system/static/js/2.9a4c36e0.chunk.js",
-    "static/js/2.9a4c36e0.chunk.js.map": "/wind-analysis-system/static/js/2.9a4c36e0.chunk.js.map",
+    "static/js/2.4e64f56a.chunk.js": "/wind-analysis-system/static/js/2.4e64f56a.chunk.js",
+    "static/js/2.4e64f56a.chunk.js.map": "/wind-analysis-system/static/js/2.4e64f56a.chunk.js.map",
     "static/js/3.b5412747.chunk.js": "/wind-analysis-system/static/js/3.b5412747.chunk.js",
     "static/js/3.b5412747.chunk.js.map": "/wind-analysis-system/static/js/3.b5412747.chunk.js.map",
     "index.html": "/wind-analysis-system/index.html",
     "static/css/2.8c5372c1.chunk.css.map": "/wind-analysis-system/static/css/2.8c5372c1.chunk.css.map",
     "static/css/main.dbf8d1d0.chunk.css.map": "/wind-analysis-system/static/css/main.dbf8d1d0.chunk.css.map",
-    "static/js/2.9a4c36e0.chunk.js.LICENSE.txt": "/wind-analysis-system/static/js/2.9a4c36e0.chunk.js.LICENSE.txt"
+    "static/js/2.4e64f56a.chunk.js.LICENSE.txt": "/wind-analysis-system/static/js/2.4e64f56a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.60e67a73.js",
     "static/css/2.8c5372c1.chunk.css",
-    "static/js/2.9a4c36e0.chunk.js",
+    "static/js/2.4e64f56a.chunk.js",
     "static/css/main.dbf8d1d0.chunk.css",
-    "static/js/main.f5901d09.chunk.js"
+    "static/js/main.aa21ecbe.chunk.js"
   ]
 }
