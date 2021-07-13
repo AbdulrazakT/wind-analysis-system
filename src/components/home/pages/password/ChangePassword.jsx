@@ -28,6 +28,7 @@ export default function ChangePassword() {
       <Grid container spacing={1}>
         <Grid align="left" item xs={12}>
           <TextField
+            type="password"
             label="Old Password"
             variant="outlined"
             onChange={(e) => setOld_password(e.target.value)}
@@ -36,6 +37,7 @@ export default function ChangePassword() {
 
         <Grid align="left" item xs={12}>
           <TextField
+            type="password"
             label="New Password"
             variant="outlined"
             onChange={(e) => setNew_password(e.target.value)}
