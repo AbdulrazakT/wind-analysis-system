@@ -5,6 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## The project uses `Express js` framework for backend and  `R` for analysis.
 
 ## Deployment
+The System is published at https://abdulrazakt.github.io/wind-analysis-system/
 
 ## Available Scripts
 
