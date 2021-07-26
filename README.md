@@ -2,7 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## `The project uses Express js framework for backend and  R for analysis.`
+## The project uses `Express js` framework for backend and  `R` for analysis.
+
+## Deployment
 
 ## Available Scripts
 
